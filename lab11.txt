@@ -1,0 +1,54 @@
+#include <QCoreApplication>
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+void selection(int *A, int size)
+ {
+     int i, j, mx, nmx;
+     for(i = 0; i < size-1; i++)
+       {
+         mx=A[i];
+         nmx=i;
+         for(j = i+1; j < size; j++)
+           {
+             if (A[j]<mx)
+                {
+                 mx=A[j];
+                 nmx=j;
+                 }
+           }
+          A[nmx]=A[i];
+          A[i]=mx;
+           }
+     }
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    setlocale(LC_ALL, "russian");
+      const int n=10000;
+      int A[n];
+      for (int i=0;i<n; i++)
+          A[i]=1+rand()%1000;
+      cout << "first 10 elements:" << endl;
+  for (int i=0;i<10;i++)
+     cout << A[i] << "  ";
+      cout << endl;
+  cout << " last 10 elements:" << endl;
+  for (int i=9990;i<10000;i++)
+     cout << A[i] << "  ";
+      cout << endl;
+      selection(A,n);
+       cout << "Sorted first 10 elements:" << endl;
+      for (int i=0;i<10;i++)
+      cout << A[i] << "  ";
+      cout << endl;
+      cout << "Sorted last 10 elements:" << endl;
+  for (int i=9990;i<10000;i++)
+     cout << A[i] << "  ";
+      cout << endl;
+
+      system("pause");
+    return a.exec();
+}
